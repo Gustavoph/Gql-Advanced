@@ -1,0 +1,13 @@
+query GetUser {
+	user {
+		id
+  }
+}
+
+query GetUsers {
+	users {
+    id
+    userName
+  }
+}
+
