@@ -1,0 +1,41 @@
+query GetUser {
+	user(id: 903) {
+		id
+    firstName
+    lastName
+    indexRef
+    createdAt
+  }
+}
+
+
+query GetUsers {
+	users {
+    id
+    firstName
+    lastName
+    userName
+    indexRef
+    createdAt
+  }
+}
+
+query GetPost{
+  post(id: 860) {
+    id
+    title
+    body
+    indexRef
+    createdAt
+  }
+}
+
+query GetPosts {
+  posts {
+    id
+    title
+    body
+    indexRef
+    createdAt
+	}
+}
