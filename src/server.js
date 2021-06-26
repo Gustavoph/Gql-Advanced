@@ -3,23 +3,36 @@ const port = 4003;
 
 const typeDefs = gql`
   type Query {
+    user: User!
+    users: [User]
+  }
+
+  type User {
     id: ID!
-    name: String
-    age: Int
-    average: Float
-    married: Boolean
-    arrayString: [String]
+    userName: String!
   }
 `;
 
 const resolvers = {
   Query: {
-    id: () => 'sbt-1q121',
-    name: () => 'Gustavo Oliveira',
-    age: () => '19',
-    average: () => '50.55',
-    married: () => false,
-    arrayString: () => ['Gustavo', 'Oliveira'],
+    user: () => {
+      return {
+        id: '52-dsa1232-231',
+        userName: 'Gustavo Oliveira',
+      };
+    },
+    users: () => {
+      return [
+        {
+          id: '1',
+          userName: 'Gustavo Oliveira',
+        },
+        {
+          id: '2',
+          userName: 'Giovanna Alcini',
+        },
+      ];
+    },
   },
 };
 
