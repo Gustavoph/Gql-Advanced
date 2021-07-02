@@ -3,8 +3,8 @@ require('dotenv').config();
 
 export const context = () => {
   return {
-    getUsers: (user = '/') => fetch(process.env.API_URL + 'users' + user),
+    getUsers: (path = '/') => fetch(process.env.API_URL + '/users' + path),
 
-    getPosts: (post = '/') => fetch(process.env.API_URL + 'posts' + post),
+    getPosts: (path = '/') => fetch(process.env.API_URL + '/posts' + path),
   };
 };
