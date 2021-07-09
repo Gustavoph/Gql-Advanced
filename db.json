@@ -369,6 +369,14 @@
       "indexRef": 26,
       "createdAt": "2021-07-08T03:45:23.055Z",
       "id": "98O3KaN"
+    },
+    {
+      "title": "title one",
+      "body": "this is a test post for my API with graphql",
+      "userId": "247",
+      "indexRef": 27,
+      "createdAt": "2021-07-09T00:22:12.057Z",
+      "id": "jRjZbX7"
     }
   ],
   "comments": [
