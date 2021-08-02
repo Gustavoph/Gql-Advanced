@@ -1,26 +1,28 @@
-// Queries
-const post = async (_, { id }, { dataSources }) => {
-  const post = await dataSources.postApi.getPost(id);
-  return post;
+const post = () => {
+  return {
+    id: '1',
+    title: 'How to make navbar with material ui',
+  };
 };
 
-const posts = async (_, { input }, { dataSources }) => {
-  const posts = await dataSources.postApi.getPosts(input);
-  return posts;
-};
+const posts = () => {
+  const postsArray = [
+    {
+      id: '1',
+      title: 'How to make navbar with material ui',
+    },
+    {
+      id: '2',
+      title: 'Make a website with reactjs',
+    },
+  ];
 
-// Mutations
-const createPost = async (_, { data }, { dataSources }) => {
-  return dataSources.postApi.createPost(data);
-};
-
-// Field resolvers
-const user = async ({ userId }, _, { dataSources }) => {
-  return dataSources.userApi.batchLoadById(userId);
+  return postsArray;
 };
 
 export const postResolvers = {
-  Query: { post, posts },
-  Mutation: { createPost },
-  Post: { user },
+  Query: {
+    post,
+    posts,
+  },
 };

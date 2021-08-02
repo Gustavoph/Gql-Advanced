@@ -1,15 +1,15 @@
-const user = async (_, { id }, { dataSources }) => {
-  const user = await dataSources.userApi.getUser(id);
-  return user;
+import fetch from 'node-fetch';
+
+const user = async () => {
+  return {
+    id: '1',
+    userName: 'Gustavo',
+  };
 };
 
-const users = async (_, { input }, { dataSources }) => {
-  const users = await dataSources.userApi.getUsers(input);
-  return users;
-};
-
-const posts = async ({ id }, _, { dataSources }) => {
-  return dataSources.postApi.batchLoadByUserId(id);
+const users = async () => {
+  const users = await fetch('http://localhost:3004/users');
+  return users.json();
 };
 
 export const userResolvers = {
@@ -17,5 +17,4 @@ export const userResolvers = {
     user,
     users,
   },
-  User: { posts },
 };
