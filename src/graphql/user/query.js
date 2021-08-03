@@ -9,10 +9,11 @@ export const userTypes = gql`
     indexRef: Int!
     createdAt: String!
     #posts: [Post!]!
+    dateSearch: String
   }
 
   extend type Query {
     user(id: ID!): User!
-    users: [User!]!
+    users(input: ApiFilters): [User!]!
   }
 `;

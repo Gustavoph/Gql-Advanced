@@ -1,16 +1,10 @@
-query GetUser {
-	user(id: 903) {
-		id
-    firstName
-    lastName
-    indexRef
-    createdAt
-  }
-}
-
-
 query GetUsers {
-	users {
+	users(input: {
+    _sort: "inputRef",
+    _order: "desc",
+    _start: 0,
+    _limit: 3
+  }) {
     id
     firstName
     lastName
@@ -31,7 +25,13 @@ query GetPost{
 }
 
 query GetPosts {
-  posts {
+  posts(
+    input: {
+    _sort: "indexRef",
+    _order: "asc",
+    _start: 0,
+    _limit: 5
+  }) {
     id
     title
     body

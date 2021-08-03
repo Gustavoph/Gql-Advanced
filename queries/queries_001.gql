@@ -1,5 +1,16 @@
 query GetUser {
-  user {
+	user(id: 903) {
+		id
+    firstName
+    lastName
+    indexRef
+    createdAt
+  }
+}
+
+
+query GetUsers {
+	users {
     id
     firstName
     lastName
@@ -9,13 +20,36 @@ query GetUser {
   }
 }
 
-query GetUsers {
-  users {
+query GetPost{
+  post(id: 860) {
     id
-    firstName
-    lastName
-    userName
+    title
+    body
     indexRef
     createdAt
+  }
+}
+
+query GetPosts {
+  posts {
+    id
+    title
+    body
+    indexRef
+    createdAt
+	}
+}
+
+query GetUser {
+	user(id: 602) {
+		id
+    firstName
+    lastName
+    indexRef
+    createdAt
+    posts {
+      title
+      body
+    }
   }
 }

@@ -12,6 +12,6 @@ export const postTypes = gql`
 
   extend type Query {
     post(id: ID!): Post!
-    posts: [Post!]!
+    posts(input: ApiFilters): [Post!]!
   }
 `;
