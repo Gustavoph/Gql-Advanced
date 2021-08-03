@@ -1,23 +1,11 @@
-const post = () => {
-  return {
-    id: '1',
-    title: 'How to make navbar with material ui',
-  };
+const post = async (_, { id }, { getPosts }) => {
+  const post = await getPosts(`/${id}`);
+  return post.json();
 };
 
-const posts = () => {
-  const postsArray = [
-    {
-      id: '1',
-      title: 'How to make navbar with material ui',
-    },
-    {
-      id: '2',
-      title: 'Make a website with reactjs',
-    },
-  ];
-
-  return postsArray;
+const posts = async (_, __, { getPosts }) => {
+  const posts = await getPosts();
+  return posts.json();
 };
 
 export const postResolvers = {

@@ -1,10 +1,13 @@
 import { ApolloServer } from 'apollo-server';
+
+import { context } from './graphql/context';
 import { typeDefs, resolvers } from './graphql';
 const port = 4003;
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context,
 });
 
 server.listen(port).then(({ url }) => {

@@ -1,13 +1,21 @@
 query GetUser {
-	user {
-		id
+  user {
+    id
+    firstName
+    lastName
+    userName
+    indexRef
+    createdAt
   }
 }
 
 query GetUsers {
-	users {
+  users {
     id
+    firstName
+    lastName
     userName
+    indexRef
+    createdAt
   }
 }
-
