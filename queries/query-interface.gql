@@ -1,0 +1,19 @@
+query {
+  post(id: 860) {
+    __typename
+    ... on Post {
+      id
+      title
+    }
+    ... on PostError {
+      statusCode
+      message
+      ... on PostNotFoundError {
+        postId
+      }
+      ... on PostNotFoundId {
+        info
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+query {
+  post(id: 860){
+    ... on Post {
+      id
+			title
+    }
+    ...on PostNotFoundError {
+      statusCode
+      message
+    }
+  }
+}

@@ -2,23 +2,23 @@ const post = async (_, { id }, { getPosts }) => {
   const response = await getPosts(`/${id}`);
   const post = await response.json();
 
+  if (typeof post.id === 'undefined' && id > 1000) {
+    return {
+      statusCode: 404,
+      message: 'Post not Found',
+      info: 'id greater than 10',
+    };
+  }
+
+  if (typeof post.id === 'undefined') {
+    return {
+      statusCode: 404,
+      message: 'Post not Found',
+      postId: id,
+    };
+  }
+
   return post;
-
-  // if (typeof post.id === 'undefined' && id > 1000) {
-  //   return {
-  //     statusCode: 404,
-  //     message: 'Post not Found',
-  //     info: 'id greater than 10',
-  //   };
-  // }
-
-  // if (typeof post.id === 'undefined') {
-  //   return {
-  //     statusCode: 404,
-  //     message: 'Post not Found',
-  //     postId: id,
-  //   };
-  // }
 };
 
 const posts = async (_, { input }, { getPosts }) => {
