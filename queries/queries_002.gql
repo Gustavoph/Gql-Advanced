@@ -1,7 +1,7 @@
 query GetUsers {
 	users(input: {
     _sort: "inputRef",
-    _order: "desc",
+    _order: DESC,
     _start: 0,
     _limit: 3
   }) {
@@ -28,7 +28,7 @@ query GetPosts {
   posts(
     input: {
     _sort: "indexRef",
-    _order: "asc",
+    _order: ASC,
     _start: 0,
     _limit: 5
   }) {
