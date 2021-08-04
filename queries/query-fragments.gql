@@ -1,5 +1,4 @@
-
-fragment user on User {
+fragment userFragment on User {
   id
   firstName
   lastName
@@ -8,29 +7,34 @@ fragment user on User {
   createdAt
 }
 
-query GET_USERS($id: ID!) {
-  user(id: $id) {
-    ...user
-  }
-}
-
-fragment post on Post {
+fragment postFragment on Post {
   id
   title
   body
   indexRef
   createdAt
-  unixTimestamp
 }
 
-query GET_POST {
-  post1: post(id: "860") {
-    ...post
+query GetUser {
+  user(id: 903) {
+    ...userFragment
   }
-  post2: post(id: "783") {
-    ...post
+}
+
+query GetUsers {
+  users {
+    ...userFragment
   }
-  post3: post(id: "15") {
-    ...post
+}
+
+query GetPost {
+  post(id: 860) {
+    ...postFragment
+  }
+}
+
+query GetPosts {
+  posts {
+    ...postFragment
   }
 }

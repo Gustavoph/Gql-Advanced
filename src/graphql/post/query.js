@@ -10,8 +10,27 @@ export const postTypes = gql`
     createdAt: String!
   }
 
+  type PostNotFoundError implements PostError {
+    statusCode: Int!
+    message: String!
+    postId: String!
+  }
+
+  type PostNotFoundId implements PostError {
+    statusCode: Int!
+    message: String!
+    info: String!
+  }
+
+  union PostResult = Post | PostNotFoundError | PostNotFoundId
+
+  interface PostError {
+    statusCode: Int!
+    message: String!
+  }
+
   extend type Query {
-    post(id: ID!): Post!
+    post(id: ID!): PostResult!
     posts(input: ApiFilters): [Post!]!
   }
 `;
