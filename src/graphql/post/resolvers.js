@@ -1,30 +1,27 @@
+import DataLoader from 'dataloader';
+import fetch from 'node-fetch';
+
 const post = async (_, { id }, { getPosts }) => {
-  const response = await getPosts(`/${id}`);
-  const post = await response.json();
-
-  if (typeof post.id === 'undefined' && id > 1000) {
-    return {
-      statusCode: 404,
-      message: 'Post not Found',
-      info: 'id greater than 10',
-    };
-  }
-
-  if (typeof post.id === 'undefined') {
-    return {
-      statusCode: 404,
-      message: 'Post not Found',
-      postId: id,
-    };
-  }
-
-  return post;
+  const post = await getPosts(`/${id}`);
+  return post.json();
 };
 
 const posts = async (_, { input }, { getPosts }) => {
-  const apifilter = new URLSearchParams(input);
-  const posts = await getPosts('/?' + apifilter);
+  //const apifilter = new URLSearchParams(input);
+  const posts = await getPosts('/');
   return posts.json();
+};
+
+const userDataLoader = new DataLoader(async (ids) => {
+  const urlQuery = ids.join('&id=');
+  const url = 'http://localhost:3004/users/?id=' + urlQuery;
+  const response = await fetch(url);
+  const users = await response.json();
+  return ids.map((id) => users.find((user) => user.id === id));
+});
+
+const user = async ({ userId }) => {
+  return userDataLoader.load(userId);
 };
 
 export const postResolvers = {
@@ -32,21 +29,7 @@ export const postResolvers = {
     post,
     posts,
   },
-  PostResult: {
-    __resolveType: (obj) => {
-      console.log('OBJ 1:', obj);
-      if (typeof obj.postId !== 'undefined') return 'PostNotFoundError';
-      if (typeof obj.info !== 'undefined') return 'PostNotFoundId';
-      if (typeof obj.id !== 'undefined') return 'Post';
-      return null;
-    },
-  },
-  PostError: {
-    __resolveType: (obj) => {
-      console.log('OBJ 2:', obj);
-      if (typeof obj.postId !== 'undefined') return 'PostNotFoundError';
-      if (typeof obj.info !== 'undefined') return 'PostNotFoundId';
-      return null;
-    },
+  Post: {
+    user,
   },
 };
