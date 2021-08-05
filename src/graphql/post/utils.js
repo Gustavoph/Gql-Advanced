@@ -1,6 +1,6 @@
-export const getUsers =
+export const getPosts =
   (fetch) =>
   (path = '/') => {
-    console.log(`GET /users${path}`);
-    return fetch(`${process.env}users${path}`);
+    console.log(`GET /posts${path}`);
+    return fetch(`${process.env.API_URL}/posts${path}`);
   };

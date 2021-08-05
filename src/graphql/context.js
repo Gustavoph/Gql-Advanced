@@ -1,16 +1,14 @@
 import fetch from 'node-fetch';
-import { makeUserDataLoader } from './post/dataloader';
-import { getUsers } from './post/utils';
-
-const BASE_URL = 'http://localhost:3004/';
+import { makePostDataLoader } from './post/dataloaders';
+import { getPosts } from './post/utils';
+import { makeuserDataLoader } from './user/dataloaders';
+import { getUsers } from './user/utils';
 
 export const context = () => {
   return {
-    userDataLoader: makeUserDataLoader(),
+    userDataLoader: makeuserDataLoader(getUsers(fetch)),
+    postDataLoader: makePostDataLoader(getPosts(fetch)),
     getUsers: getUsers(fetch),
-    getPosts: (path = '/') => {
-      console.log(`GET /posts${path}`);
-      return fetch(`${BASE_URL}posts${path}`);
-    },
+    getPosts: getPosts(fetch),
   };
 };
