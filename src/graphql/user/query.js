@@ -12,8 +12,26 @@ export const userTypes = gql`
     dateSearch: String
   }
 
+  input CreateUserInput {
+    firstName: String!
+    lastName: String!
+    userName: String!
+  }
+
+  input UpdateUserInput {
+    firstName: String
+    lastName: String
+    userName: String
+  }
+
   extend type Query {
     user(id: ID!): User!
     users(input: ApiFilters): [User!]!
+  }
+
+  extend type Mutation {
+    createUser(data: CreateUserInput!): User!
+    updateUser(userId: ID!, data: UpdateUserInput): User!
+    deleteUser(userId: ID!): Boolean!
   }
 `;

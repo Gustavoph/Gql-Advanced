@@ -17,6 +17,12 @@ export const postTypes = gql`
     userId: String!
   }
 
+  input UpdatePostInput {
+    title: String
+    body: String
+    userId: String
+  }
+
   extend type Query {
     post(id: ID!): Post!
     posts(input: ApiFilters): [Post!]!
@@ -24,5 +30,7 @@ export const postTypes = gql`
 
   extend type Mutation {
     createPost(data: CreatePostInput!): Post!
+    updatePost(postId: ID!, data: UpdatePostInput): Post!
+    deletePost(postId: ID!): Boolean!
   }
 `;

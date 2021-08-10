@@ -14,8 +14,7 @@ export const createPostFn = async (postData, dataSource) => {
 
 const userExists = async (user, dataSource) => {
   try {
-    const postInfo = await dataSource.context.getUsers('/' + user);
-    console.log('Return post:', postInfo);
+    await dataSource.context.getUsers('/' + user);
   } catch (e) {
     throw new ValidationError(`User ${user} does not exist`);
   }
@@ -41,4 +40,41 @@ const createPostInfo = async (postData, dataSource) => {
     indexRef,
     createdAt: new Date().toISOString(),
   };
+};
+
+export const updatePostFn = async (postId, postData, dataSource) => {
+  if (!postId) {
+    throw new ValidationError('Missing postId');
+  }
+
+  const { title, body, userId } = postData;
+
+  if (typeof title !== 'undefined') {
+    if (!title) {
+      throw new ValidationError('Title missing');
+    }
+  }
+
+  if (typeof body !== 'undefined') {
+    if (!body) {
+      throw new ValidationError('Body missing');
+    }
+  }
+
+  if (typeof userId !== 'undefined') {
+    if (!userId) {
+      throw new ValidationError('UserId missing');
+    }
+    await userExists(userId, dataSource);
+  }
+  return dataSource.patch(postId, { ...postData });
+};
+
+export const deletePostFn = async (postId, dataSource) => {
+  if (!postId) {
+    throw new ValidationError('Missing postId');
+  }
+  const deleted = await dataSource.delete(postId);
+  console.log(deleted);
+  return !!deleted;
 };
