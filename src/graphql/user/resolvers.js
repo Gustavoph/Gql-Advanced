@@ -1,3 +1,5 @@
+// Query
+
 const user = async (_, { id }, { dataSources }) => {
   const user = await dataSources.userApi.getUser(id);
   return user;
@@ -11,6 +13,8 @@ const users = async (_, { input }, { dataSources }) => {
 const posts = ({ id }, _, { dataSources }) => {
   return dataSources.postApi.dataLoader.load(id);
 };
+
+// Mutation
 
 const createUser = (_, { data }, { dataSources }) => {
   return dataSources.userApi.createUser(data);

@@ -1,0 +1,27 @@
+mutation CREATE_POST(
+  $title: String!
+	$body: String!
+  $userId: String!
+) {
+  createPost(data: {
+    title: $title
+    body: $body,
+    userId: $userId,
+  }) {
+		id
+    title
+    body
+    userId
+    indexRef
+    user {
+      id
+      userName
+    }
+  }
+}
+
+# {
+#   "title": "Titulo dinamico",
+#   "body": "Corpo do post dinamico",
+#   "userId": "903"
+# }
