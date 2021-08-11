@@ -159,6 +159,15 @@
       "userName": "marcia_carvalho81",
       "indexRef": 1,
       "createdAt": "2016-12-08T00:49:39.870Z"
+    },
+    {
+      "firstName": "Gustavo",
+      "lastName": "Oliveira",
+      "userName": "Gustavo-Oliveira",
+      "passwordHash": "$2b$12$d.f23RQcAqFFjU/f28llHOYrczcV3X/nUGmgEEeJftDTm2seQP0u.",
+      "indexRef": 21,
+      "createdAt": "2021-08-11T01:39:09.781Z",
+      "id": "0USrYV_"
     }
   ],
   "posts": [
