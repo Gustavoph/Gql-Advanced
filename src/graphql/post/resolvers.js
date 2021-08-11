@@ -1,11 +1,17 @@
 // Queries
 
+import { AuthenticationError } from 'apollo-server';
+
 const post = async (_, { id }, { dataSources }) => {
   const post = dataSources.postApi.getPost(id);
   return post;
 };
 
-const posts = async (_, { input }, { dataSources }) => {
+const posts = async (_, { input }, { dataSources, loggedUserId }) => {
+  if (!loggedUserId) {
+    throw new AuthenticationError('You have to log in');
+  }
+  console.log(loggedUserId);
   const posts = dataSources.postApi.getPosts(input);
   return posts;
 };

@@ -1,14 +1,22 @@
-import fetch from 'node-fetch';
-import { makePostDataLoader } from './post/dataloaders';
-import { getPosts } from './post/utils';
-import { makeuserDataLoader } from './user/dataloaders';
-import { getUsers } from './user/utils';
+import jwt from 'jsonwebtoken';
 
-export const context = () => {
+const authorizeUser = (req) => {
+  const { headers } = req;
+  const { authorization } = headers;
+
+  try {
+    const [_bearer, token] = authorization.split(' ');
+    const { userId } = jwt.verify(token, process.env.JWT_SECRET);
+    return userId;
+  } catch (e) {
+    return '';
+  }
+};
+
+export const context = ({ req }) => {
+  const loggedUserId = authorizeUser(req);
+
   return {
-    userDataLoader: makeuserDataLoader(getUsers(fetch)),
-    postDataLoader: makePostDataLoader(getPosts(fetch)),
-    getUsers: getUsers(fetch),
-    getPosts: getPosts(fetch),
+    loggedUserId,
   };
 };
