@@ -161,13 +161,14 @@
       "createdAt": "2016-12-08T00:49:39.870Z"
     },
     {
-      "firstName": "Gustavo",
+      "firstName": "Mudei os firstName",
       "lastName": "Oliveira",
       "userName": "Gustavo-Oliveira",
       "passwordHash": "$2b$12$d.f23RQcAqFFjU/f28llHOYrczcV3X/nUGmgEEeJftDTm2seQP0u.",
       "indexRef": 21,
       "createdAt": "2021-08-11T01:39:09.781Z",
-      "id": "0USrYV_"
+      "id": "0USrYV_",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwVVNyWVZfIiwiaWF0IjoxNjI4NzczMDMzLCJleHAiOjE2MjkzNzc4MzN9.FRfDT8Hn_a2IHsak2blwJTglFrZXNJRqypjfk3T_bW4"
     }
   ],
   "posts": [

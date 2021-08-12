@@ -23,7 +23,6 @@ export const userTypes = gql`
     firstName: String
     lastName: String
     userName: String
-    password: String!
   }
 
   extend type Query {
