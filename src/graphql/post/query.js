@@ -20,7 +20,7 @@ export const postTypes = gql`
   input UpdatePostInput {
     title: String
     body: String
-    userId: String
+    #userId: String
   }
 
   extend type Query {
