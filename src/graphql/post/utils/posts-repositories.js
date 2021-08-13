@@ -12,17 +12,16 @@ export const createPostFn = async (postData, dataSource) => {
   return await dataSource.post('', { ...postInfo });
 };
 
-const userExists = async (user, dataSource) => {
+const userExists = async (userId, dataSource) => {
   try {
-    await dataSource.context.getUsers('/' + user);
+    await dataSource.context.dataSources.userApi.get(userId);
   } catch (e) {
-    throw new ValidationError(`User ${user} does not exist`);
+    throw new ValidationError(`User ${userId} does not exist`);
   }
 };
 
 const createPostInfo = async (postData, dataSource) => {
   const { title, body, userId } = postData;
-
   await userExists(userId, dataSource);
 
   const indexRefPost = await dataSource.get('', {

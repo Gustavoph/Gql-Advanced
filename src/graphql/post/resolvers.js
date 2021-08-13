@@ -1,28 +1,25 @@
 // Queries
-
-import { AuthenticationError } from 'apollo-server';
+import { checkIsLoggedIn } from '../login/utils/login-functions';
 
 const post = async (_, { id }, { dataSources }) => {
   const post = dataSources.postApi.getPost(id);
   return post;
 };
 
-const posts = async (_, { input }, { dataSources, loggedUserId }) => {
-  if (!loggedUserId) {
-    throw new AuthenticationError('You have to log in');
-  }
-  console.log(loggedUserId);
+const posts = async (_, { input }, { dataSources }) => {
   const posts = dataSources.postApi.getPosts(input);
   return posts;
 };
 
-const user = async ({ userId }, _, { userDataLoader }) => {
-  return userDataLoader.load(userId);
+const user = async ({ userId }, _, { dataSources }) => {
+  return dataSources.userApi.getUser(userId);
 };
 
 // Mutations
 
-const createPost = async (_, { data }, { dataSources }) => {
+const createPost = async (_, { data }, { dataSources, loggedUserId }) => {
+  checkIsLoggedIn(loggedUserId);
+  data.userId = loggedUserId;
   return dataSources.postApi.createPost(data);
 };
 

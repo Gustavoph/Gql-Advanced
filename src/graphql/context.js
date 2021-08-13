@@ -12,7 +12,6 @@ const authorizeUser = async (req) => {
     const userApi = new UsersApi();
     userApi.initialize({});
     const foundUser = await userApi.get(userId);
-
     if (foundUser.token !== token) return '';
     return userId;
   } catch (e) {
