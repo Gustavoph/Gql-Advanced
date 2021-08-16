@@ -74,6 +74,5 @@ export const deletePostFn = async (postId, dataSource) => {
     throw new ValidationError('Missing postId');
   }
   const deleted = await dataSource.delete(postId);
-  console.log(deleted);
   return !!deleted;
 };

@@ -1,5 +1,4 @@
 import { ApolloServer } from 'apollo-server';
-
 import { context } from './graphql/context';
 import { typeDefs, resolvers } from './graphql';
 import { PostsApi } from './graphql/post/datasources';
@@ -11,6 +10,11 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context,
+  introspection: true,
+  cors: {
+    origin: '*',
+    credentials: true,
+  },
   dataSources: () => {
     return {
       postApi: new PostsApi(),
