@@ -168,7 +168,7 @@
       "indexRef": 21,
       "createdAt": "2021-08-11T01:39:09.781Z",
       "id": "0USrYV_",
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwVVNyWVZfIiwiaWF0IjoxNjI4OTA1NDkyLCJleHAiOjE2Mjk1MTAyOTJ9.2aoVQXuT96RfFfneO0oTfN_wnUOG_nQ15Xk2ue3e3qU"
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwVVNyWVZfIiwiaWF0IjoxNjI4ODg1NzM1LCJleHAiOjE2Mjk0OTA1MzV9.OuSM0Zz4m1QkqZe4vEOc5ixHDDfCzazDF3Vpa2wFmwI"
     },
     {
       "firstName": "Giovanna",
@@ -178,7 +178,7 @@
       "indexRef": 22,
       "createdAt": "2021-08-13T03:00:01.590Z",
       "id": "AH3SpG4",
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBSDNTcEc0IiwiaWF0IjoxNjI4OTA1MzQ1LCJleHAiOjE2Mjk1MTAxNDV9.k3hutEUqzIHxLuiRViwHD4jZL__VIDSfaIukMPHtlLc"
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBSDNTcEc0IiwiaWF0IjoxNjI4ODU3OTQ1LCJleHAiOjE2Mjk0NjI3NDV9.k_Ehgy3NORXpR6DPjmVCPwbWYKykiplyr48SsPkTK38"
     }
   ],
   "posts": [
@@ -421,6 +421,14 @@
       "indexRef": 30,
       "createdAt": "2021-08-13T03:23:28.949Z",
       "id": "_OnYbBx"
+    },
+    {
+      "title": "Esse post está sendo auterado",
+      "body": "Esse post foi feito para testar autenticação da nossa aplicação",
+      "userId": "0USrYV_",
+      "indexRef": 31,
+      "createdAt": "2021-08-13T11:45:23.810Z",
+      "id": "x3ueQV6"
     }
   ],
   "comments": [
