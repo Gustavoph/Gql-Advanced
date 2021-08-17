@@ -1,5 +1,4 @@
 import { ApolloServer } from 'apollo-server';
-
 import { context } from './graphql/context';
 import { typeDefs, resolvers } from './graphql';
 import { PostsApi } from './graphql/post/datasources';
