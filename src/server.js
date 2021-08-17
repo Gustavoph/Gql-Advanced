@@ -10,11 +10,6 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context,
-  introspection: true,
-  cors: {
-    origin: '*',
-    credentials: true,
-  },
   dataSources: () => {
     return {
       postApi: new PostsApi(),
