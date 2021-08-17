@@ -11,6 +11,10 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context,
+  cors: {
+    credentials: true,
+    origin: ['https://cdpn.io'],
+  },
   dataSources: () => {
     return {
       postApi: new PostsApi(),
@@ -18,6 +22,7 @@ const server = new ApolloServer({
       loginApi: new LoginApi(),
     };
   },
+  uploads: false,
 });
 
 server.listen(port).then(({ url }) => {

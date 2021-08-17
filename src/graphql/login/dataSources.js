@@ -41,7 +41,8 @@ export class LoginApi extends RESTDataSource {
       secure: true, // Rede segura - Https
       httpOnly: true, // Não deve ser acessado via código
       maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
-      sameSite: 'strict', // strict lax none
+      path: '/',
+      sameSite: 'none', // strict lax none
     });
 
     return {
@@ -62,6 +63,7 @@ export class LoginApi extends RESTDataSource {
     }
 
     await this.patch(user[0].id, { token: '' }, { cacheOptions: { ttl: 0 } });
+    this.context.res.clearCookie('jwtToken');
     return true;
   }
 
