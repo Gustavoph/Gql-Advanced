@@ -66,7 +66,8 @@ export class LoginApi extends RESTDataSource {
 
   async logout(userName) {
     const user = await this.getUser(userName);
-
+    console.log('user id: ', user[0].id);
+    console.log('token id: ', this.context.loggedUserId);
     if (user[0].id !== this.context.loggedUserId) {
       throw new AuthenticationError('You are not this user.');
     }
