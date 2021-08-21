@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/server.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon -e 'js' -r dotenv/config -r sucrase/register src/server.js",
-    "server": "json-server --watch db.json --port 3004"
+    "server": "json-server --watch db.json --port 3004",
+    "knex": "node --es-module-specifier-resolution=node src/knex/utils/index.js"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +23,8 @@
     "graphql-disable-introspection": "^1.2.0",
     "json-server": "^0.16.3",
     "jsonwebtoken": "^8.5.1",
+    "knex": "^0.21.21",
+    "mysql": "^2.18.1",
     "node-fetch": "^2.6.1",
     "sucrase": "^3.19.0"
   },
