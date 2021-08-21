@@ -1,4 +1,4 @@
-import { knex } from '../index';
+import { knex } from '../index.js';
 import { comments } from '../../../db.json';
 import { dateISOtoMySQL } from './dateIsoToMysql';
 
